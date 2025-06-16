@@ -220,6 +220,40 @@ function loadWorldMap(Q) {
             size: 14,
             color: '#000'
         }));
+
+        // Button to enter a level code
+        var codeButton = stage.insert(new Q.UI.Button({
+            label: 'Enter Code',
+            x: Q.width - 60,
+            y: 30,
+            fill: '#FFFFFF'
+        }));
+
+        codeButton.on('click', function() {
+            var code = prompt('Enter level code:');
+            if (!code) { return; }
+            var level = decodeLevelCode(code.trim());
+            if (level) {
+                var progress = Q.state.get('progress') || { unlockedLevels: 1, completedLevels: [] };
+                if (level > progress.unlockedLevels) {
+                    progress.unlockedLevels = level;
+                }
+                // Mark previous levels as completed
+                progress.completedLevels = [];
+                for (var i = 1; i < level; i++) {
+                    progress.completedLevels.push(i);
+                }
+                Q.state.set('progress', progress);
+                if (typeof(Storage) !== 'undefined') {
+                    localStorage.setItem('ydtProgress', JSON.stringify(progress));
+                }
+                alert('Unlocked up to level ' + level + '!');
+                Q.clearStages();
+                Q.stageScene('worldMap');
+            } else {
+                alert('Invalid code');
+            }
+        });
         
         // Viewport follows player
         stage.add('viewport').follow(player, {x: true, y: false}, {
