@@ -36,6 +36,8 @@ Example object properties in Tiled:
 - Spawns at the position specified in the "Spawn" object layer
 - Camera follows the nugget throughout the level
 
+ - After looking both ways Nugget jumps over the scarecrow and keeps walking as
+   the screen fades to black
 ### Princess Mabel
 - Class: `princess`
 - Placed in the "princess" object layer
@@ -45,6 +47,11 @@ Example object properties in Tiled:
 - Class: `scarecrow`
 - Replaces the princess in levels 1-7
 - Shows a placeholder color block if `scarecrow.png` is missing
+
+- Triggers Nugget's look-around win sequence about 100 pixels before contact
+ - Nugget now keeps facing the direction set during this sequence so his head
+   turns left and right 50% slower until the scene fades out
+
 
 ### Collectibles (Yarnballs)
 - Class: `yarnball`

@@ -83,21 +83,33 @@ function loadNugget(Q) {
             Q.audio.play('music_level_complete.mp3');
             Q.stageScene('endGame', 1, { label: 'You Win' });
         },
-        scarecrowWin: function() {
-            var self = this;
-            this.p.move = false;
-            Q.audio.stop('music_main.mp3');
-            Q.audio.play('music_level_complete.mp3');
 
-            this.animate({ x: this.p.x + 30 }, 0.5, {
-                callback: function() {
-                    var dirs = ['left', 'right', 'left', 'right'];
-                    var i = 0;
-                    var look = function() {
-                        if(i < dirs.length) {
-                            self.p.direction = dirs[i];
-                            i++;
-                            setTimeout(look, 250);
+                        if (i < dirs.length) {
+                            self.p.direction = 'right';
+                            var jumpX = target ? target.p.x + 50 : self.p.x + 150;
+                            var walkX = jumpX + 150;
+                            self.animate({ x: jumpX, y: self.p.y - 80 }, 0.5, {
+                                    self.animate({ x: walkX, y: self.p.y }, 1);
+                                    var stage = self.stage;
+                                    var circle = stage.insert(new Q.Sprite({
+                                        x: self.p.x,
+                                        y: self.p.y,
+                                        radius: 10,
+                                        type: Q.SPRITE_NONE
+                                    }));
+                                    circle.add('tween');
+                                    circle.draw = function(ctx) {
+                                        ctx.fillStyle = '#000';
+                                        ctx.beginPath();
+                                        ctx.arc(0, 0, this.p.radius, 0, Math.PI * 2);
+                                        ctx.fill();
+                                    };
+                                    circle.animate({ radius: 1000 }, 1, {
+                                        callback: function() {
+                                            Q.stageScene('endGame', 1, { label: 'You Win' });
+                                        }
+                                    });
+                            setTimeout(look, 375);
                         } else {
                             var stage = self.stage;
                             var circle = stage.insert(new Q.Sprite({
@@ -105,7 +117,8 @@ function loadNugget(Q) {
                                 y: self.p.y,
                                 radius: 10,
                                 type: Q.SPRITE_NONE
-                            }), 10);
+                            }));
+
                             circle.add('tween');
                             circle.draw = function(ctx) {
                                 ctx.fillStyle = '#000';
@@ -158,7 +171,7 @@ function loadNugget(Q) {
                  * He has won the game.
                  */
                 else {
-                    this.play('stand_right');
+                    this.play('stand_' + this.p.direction);
                     this.p.speed = 0;
                     this.p.jumpSpeed = 0;
                 }

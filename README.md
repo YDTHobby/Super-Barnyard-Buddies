@@ -2,9 +2,23 @@
 
 This project uses the Quintus engine and features multiple levels loaded from TMX files.
 
+## Running the game
+
+To avoid script loading errors such as `loadNugget is not defined`, start a small
+local web server from the repository root and open `index.html` via a browser:
+
+```bash
+python3 -m http.server
+```
+
+Then visit `http://localhost:8000/index.html`.
+
 ## New Sprite: scarecrow
 
 Levels 1-7 now end with a `scarecrow` character instead of the princess. The scarecrow uses
 `scarecrow.png` if available, but when the image is missing the game falls back to drawing a
 simple colored block. Touching the scarecrow triggers a short look-around animation for Nugget
-before the level completion screen appears and the game returns to the world map.
+that now begins about **100 pixels** before the player reaches the sprite. Nugget turns left and right 50% slower than before
+while standing still. After Nugget looks both ways he jumps over the scarecrow and keeps walking
+as the screen fades to black, then the level completion screen appears and the game returns to the world map.
+
