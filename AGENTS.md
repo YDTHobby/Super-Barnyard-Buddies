@@ -141,3 +141,17 @@ The game implements a viewport that follows the player (nugget) with the followi
 - **js/yarnball.js**: Collectible implementation
 - **lib/quintus_tmx.js**: Handles loading and processing of TMX files
 - **lib/quintus_2d.js**: Provides 2D game engine functionality 
+
+## Adding New Levels
+
+The game recognizes multiple stages, each defined as `levelN.tmx` in the `data/` directory with a matching loader file `js/levelN.js`.
+
+To introduce a new level:
+
+1. Create a Tiled map named `levelN.tmx` and save it under `data/`.
+2. Copy `js/level1.js` to `js/levelN.js` and update the `Q.stageTMX` call to reference `levelN.tmx`.
+3. Include `<script src="js/levelN.js"></script>` in `index.html`.
+4. Call `loadLevelN(Q);` inside `js/game.js` during setup.
+5. Add `levelN.tmx` to the preload list within `Q.loadTMX` in `js/game.js`.
+
+Following this convention keeps all levels consistent with the existing camera and HUD setup.

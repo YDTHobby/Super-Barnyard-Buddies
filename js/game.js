@@ -39,6 +39,13 @@ window.addEventListener('load', function() {
     loadHUB(Q);
     loadWorldMap(Q);
     loadLevel1(Q);
+    loadLevel2(Q);
+    loadLevel3(Q);
+    loadLevel4(Q);
+    loadLevel5(Q);
+    loadLevel6(Q);
+    loadLevel7(Q);
+    loadLevel8(Q);
     
     /**
      * Load saved progress from localStorage
@@ -65,7 +72,7 @@ window.addEventListener('load', function() {
     /**
      * We load the files we need for the game.
      */
-    Q.loadTMX('level.tmx, mainTitle.png, nugget_small.png, nugget_small.json, tangledyarn.png, tangledyarn.json, cat.png, cat.json, princess.png, yarnball.png, yarnball.json, music_main.mp3, music_main.ogg, music_die.mp3, music_die.ogg, music_level_complete.mp3, music_level_complete.ogg, yarnball.mp3, yarnball.ogg', function() {
+    Q.loadTMX('level.tmx, level2.tmx, level3.tmx, level4.tmx, level5.tmx, level6.tmx, level7.tmx, level8.tmx, mainTitle.png, nugget_small.png, nugget_small.json, tangledyarn.png, tangledyarn.json, cat.png, cat.json, princess.png, yarnball.png, yarnball.json, music_main.mp3, music_main.ogg, music_die.mp3, music_die.ogg, music_level_complete.mp3, music_level_complete.ogg, yarnball.mp3, yarnball.ogg', function() {
         Q.compileSheets('nugget_small.png', 'nugget_small.json');
         Q.compileSheets('tangledyarn.png', 'tangledyarn.json');
         Q.compileSheets('cat.png', 'cat.json');
