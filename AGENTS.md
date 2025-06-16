@@ -155,3 +155,14 @@ To introduce a new level:
 5. Add `levelN.tmx` to the preload list within `Q.loadTMX` in `js/game.js`.
 
 Following this convention keeps all levels consistent with the existing camera and HUD setup.
+
+## Agent Instructions
+
+The following tips help new agents quickly understand and run the game:
+
+1. **Start Here**: Read this `AGENTS.md` file before exploring the codebase. It outlines the most important files and how Tiled integration works.
+2. **Running the Game**: Serve the repository with a simple local web server (for example, `python3 -m http.server`) and open `index.html` in your browser to launch the game.
+3. **Entry Point**: The engine is initialized in `js/game.js`, which also loads `level1` by calling `loadLevel1(Q);`.
+4. **Levels**: Each level has a corresponding `js/levelN.js` file that loads a `data/levelN.tmx` map.
+5. **Keep Documentation Updated**: Update this file whenever new stages or features are added so future agents can easily follow the project's structure.
+
