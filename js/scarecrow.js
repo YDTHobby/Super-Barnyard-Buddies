@@ -6,7 +6,8 @@ function loadScarecrow(Q) {
                 sensor: true,
                 w: 48,
                 h: 96,
-                color: '#795548'
+                color: '#795548',
+                triggered: false
             });
             this.on('sensor');
         },
@@ -21,7 +22,19 @@ function loadScarecrow(Q) {
         },
         sensor: function() {
             this.p.sensor = false;
-            Q('nugget').trigger('scarecrowWin', this);
+            if(!this.p.triggered) {
+                this.p.triggered = true;
+                Q('nugget').trigger('scarecrowWin', this);
+            }
+        },
+        step: function() {
+            if(!this.p.triggered) {
+                var player = Q('nugget').first();
+                if(player && Math.abs(player.p.x - this.p.x) <= 100) {
+                    this.p.triggered = true;
+                    player.trigger('scarecrowWin', this);
+                }
+            }
         }
     });
 }

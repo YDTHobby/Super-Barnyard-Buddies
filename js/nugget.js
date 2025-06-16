@@ -89,7 +89,7 @@ function loadNugget(Q) {
             Q.audio.stop('music_main.mp3');
             Q.audio.play('music_level_complete.mp3');
 
-            var targetX = target ? target.p.x - 30 : this.p.x + 30;
+            var targetX = target ? target.p.x - 100 : this.p.x + 30;
             this.animate({ x: targetX }, 0.5, {
                 callback: function() {
                     var dirs = ['left', 'right', 'left', 'right'];
@@ -98,7 +98,7 @@ function loadNugget(Q) {
                         if(i < dirs.length) {
                             self.p.direction = dirs[i];
                             i++;
-                            setTimeout(look, 250);
+                            setTimeout(look, 375);
                         } else {
                             var stage = self.stage;
                             var circle = stage.insert(new Q.Sprite({
