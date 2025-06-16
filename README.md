@@ -2,6 +2,17 @@
 
 This project uses the Quintus engine and features multiple levels loaded from TMX files.
 
+## Running the game
+
+To avoid script loading errors such as `loadNugget is not defined`, start a small
+local web server from the repository root and open `index.html` via a browser:
+
+```bash
+python3 -m http.server
+```
+
+Then visit `http://localhost:8000/index.html`.
+
 ## New Sprite: scarecrow
 
 Levels 1-7 now end with a `scarecrow` character instead of the princess. The scarecrow uses
