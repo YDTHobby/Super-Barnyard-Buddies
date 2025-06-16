@@ -83,11 +83,13 @@ function loadNugget(Q) {
             Q.audio.play('music_level_complete.mp3');
             Q.stageScene('endGame', 1, { label: 'You Win' });
         },
+
         scarecrowWin: function(target) {
             var self = this;
             this.p.move = false;
             Q.audio.stop('music_main.mp3');
             Q.audio.play('music_level_complete.mp3');
+
 
             var targetX = target ? target.p.x - 100 : this.p.x + 30;
             this.animate({ x: targetX }, 0.5, {
@@ -98,6 +100,7 @@ function loadNugget(Q) {
                         if(i < dirs.length) {
                             self.p.direction = dirs[i];
                             i++;
+
                             setTimeout(look, 375);
                         } else {
                             var stage = self.stage;
@@ -107,6 +110,7 @@ function loadNugget(Q) {
                                 radius: 10,
                                 type: Q.SPRITE_NONE
                             }));
+
                             circle.add('tween');
                             circle.draw = function(ctx) {
                                 ctx.fillStyle = '#000';

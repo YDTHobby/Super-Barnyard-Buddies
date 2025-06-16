@@ -4,10 +4,12 @@ function loadScarecrow(Q) {
             this._super(p, {
                 asset: 'scarecrow.png',
                 sensor: true,
+
                 w: 48,
                 h: 96,
                 color: '#795548',
                 triggered: false
+
             });
             this.on('sensor');
         },

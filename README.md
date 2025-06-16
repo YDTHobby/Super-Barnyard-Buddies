@@ -10,3 +10,4 @@ simple colored block. Touching the scarecrow triggers a short look-around animat
 that now begins about **100 pixels** before the player reaches the sprite. Nugget turns left and right 50% slower than before
 while standing still until the scene fades out, ensuring the animation plays smoothly before
 the level completion screen appears and the game returns to the world map.
+
