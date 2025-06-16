@@ -36,6 +36,8 @@ Example object properties in Tiled:
 - Spawns at the position specified in the "Spawn" object layer
 - Camera follows the nugget throughout the level
 
+ - After looking both ways Nugget jumps over the scarecrow and keeps walking as
+   the screen fades to black
 ### Princess Mabel
 - Class: `princess`
 - Placed in the "princess" object layer

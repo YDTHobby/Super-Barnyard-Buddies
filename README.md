@@ -8,6 +8,6 @@ Levels 1-7 now end with a `scarecrow` character instead of the princess. The sca
 `scarecrow.png` if available, but when the image is missing the game falls back to drawing a
 simple colored block. Touching the scarecrow triggers a short look-around animation for Nugget
 that now begins about **100 pixels** before the player reaches the sprite. Nugget turns left and right 50% slower than before
-while standing still until the scene fades out, ensuring the animation plays smoothly before
-the level completion screen appears and the game returns to the world map.
+while standing still. After Nugget looks both ways he jumps over the scarecrow and keeps walking
+as the screen fades to black, then the level completion screen appears and the game returns to the world map.
 

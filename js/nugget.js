@@ -84,23 +84,31 @@ function loadNugget(Q) {
             Q.stageScene('endGame', 1, { label: 'You Win' });
         },
 
-        scarecrowWin: function(target) {
-            var self = this;
-            this.p.move = false;
-            Q.audio.stop('music_main.mp3');
-            Q.audio.play('music_level_complete.mp3');
-
-
-            var targetX = target ? target.p.x - 100 : this.p.x + 30;
-            this.animate({ x: targetX }, 0.5, {
-                callback: function() {
-                    var dirs = ['left', 'right', 'left', 'right'];
-                    var i = 0;
-                    var look = function() {
-                        if(i < dirs.length) {
-                            self.p.direction = dirs[i];
-                            i++;
-
+                        if (i < dirs.length) {
+                            self.p.direction = 'right';
+                            var jumpX = target ? target.p.x + 50 : self.p.x + 150;
+                            var walkX = jumpX + 150;
+                            self.animate({ x: jumpX, y: self.p.y - 80 }, 0.5, {
+                                    self.animate({ x: walkX, y: self.p.y }, 1);
+                                    var stage = self.stage;
+                                    var circle = stage.insert(new Q.Sprite({
+                                        x: self.p.x,
+                                        y: self.p.y,
+                                        radius: 10,
+                                        type: Q.SPRITE_NONE
+                                    }));
+                                    circle.add('tween');
+                                    circle.draw = function(ctx) {
+                                        ctx.fillStyle = '#000';
+                                        ctx.beginPath();
+                                        ctx.arc(0, 0, this.p.radius, 0, Math.PI * 2);
+                                        ctx.fill();
+                                    };
+                                    circle.animate({ radius: 1000 }, 1, {
+                                        callback: function() {
+                                            Q.stageScene('endGame', 1, { label: 'You Win' });
+                                        }
+                                    });
                             setTimeout(look, 375);
                         } else {
                             var stage = self.stage;
