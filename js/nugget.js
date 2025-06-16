@@ -159,7 +159,7 @@ function loadNugget(Q) {
                  * He has won the game.
                  */
                 else {
-                    this.play('stand_right');
+                    this.play('stand_' + this.p.direction);
                     this.p.speed = 0;
                     this.p.jumpSpeed = 0;
                 }

@@ -46,6 +46,8 @@ Example object properties in Tiled:
 - Replaces the princess in levels 1-7
 - Shows a placeholder color block if `scarecrow.png` is missing
 - Triggers Nugget's look-around win sequence slightly before direct contact
+ - Nugget now keeps facing the direction set during this sequence so his head
+   turns left and right until the scene fades out
 
 ### Collectibles (Yarnballs)
 - Class: `yarnball`
