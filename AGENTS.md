@@ -41,6 +41,11 @@ Example object properties in Tiled:
 - Placed in the "princess" object layer
 - Acts as the level goal
 
+### Scarecrow
+- Class: `scarecrow`
+- Replaces the princess in levels 1-7
+- Shows a placeholder color block if `scarecrow.png` is missing
+
 ### Collectibles (Yarnballs)
 - Class: `yarnball`
 - Placed in the "coins" object layer
@@ -137,6 +142,7 @@ The game implements a viewport that follows the player (nugget) with the followi
 - **js/level1.js**: Handles level loading and setup
 - **js/nugget.js**: Player character implementation
 - **js/princessmabel.js**: Princess Mabel character implementation
+- **js/scarecrow.js**: Scarecrow placeholder character used for levels 1-7
 - **js/tangledyarn.js**: Enemy implementation
 - **js/yarnball.js**: Collectible implementation
 - **lib/quintus_tmx.js**: Handles loading and processing of TMX files
