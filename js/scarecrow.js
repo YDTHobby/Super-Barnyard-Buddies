@@ -4,8 +4,8 @@ function loadScarecrow(Q) {
             this._super(p, {
                 asset: 'scarecrow.png',
                 sensor: true,
-                w: 32,
-                h: 64,
+                w: 48,
+                h: 96,
                 color: '#795548'
             });
             this.on('sensor');
@@ -21,7 +21,7 @@ function loadScarecrow(Q) {
         },
         sensor: function() {
             this.p.sensor = false;
-            Q('nugget').trigger('scarecrowWin');
+            Q('nugget').trigger('scarecrowWin', this);
         }
     });
 }

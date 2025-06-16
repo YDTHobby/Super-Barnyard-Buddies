@@ -83,13 +83,14 @@ function loadNugget(Q) {
             Q.audio.play('music_level_complete.mp3');
             Q.stageScene('endGame', 1, { label: 'You Win' });
         },
-        scarecrowWin: function() {
+        scarecrowWin: function(target) {
             var self = this;
             this.p.move = false;
             Q.audio.stop('music_main.mp3');
             Q.audio.play('music_level_complete.mp3');
 
-            this.animate({ x: this.p.x + 30 }, 0.5, {
+            var targetX = target ? target.p.x - 30 : this.p.x + 30;
+            this.animate({ x: targetX }, 0.5, {
                 callback: function() {
                     var dirs = ['left', 'right', 'left', 'right'];
                     var i = 0;
