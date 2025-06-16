@@ -34,6 +34,7 @@ window.addEventListener('load', function() {
     loadTangledyarn(Q);
     loadCat(Q);
     loadYarnball(Q);
+    loadScarecrow(Q);
     loadEndGame(Q);
     loadMainTitle(Q);
     loadHUB(Q);
