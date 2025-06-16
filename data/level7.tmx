@@ -2903,7 +2903,7 @@
  <objectgroup name="princess">
   <object id="5" name="princess" type="princess" x="5253" y="527">
    <properties>
-    <property name="Class" value="princess"/>
+    <property name="Class" value="scarecrow"/>
    </properties>
   </object>
  </objectgroup>

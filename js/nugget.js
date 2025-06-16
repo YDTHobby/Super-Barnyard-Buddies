@@ -51,6 +51,7 @@ function loadNugget(Q) {
              */
             this.on('die');
             this.on('win');
+            this.on('scarecrowWin');
         },
         /**
          * nugget dies.
@@ -81,6 +82,47 @@ function loadNugget(Q) {
             Q.audio.stop('music_main.mp3');
             Q.audio.play('music_level_complete.mp3');
             Q.stageScene('endGame', 1, { label: 'You Win' });
+        },
+        scarecrowWin: function() {
+            var self = this;
+            this.p.move = false;
+            Q.audio.stop('music_main.mp3');
+            Q.audio.play('music_level_complete.mp3');
+
+            this.animate({ x: this.p.x + 30 }, 0.5, {
+                callback: function() {
+                    var dirs = ['left', 'right', 'left', 'right'];
+                    var i = 0;
+                    var look = function() {
+                        if(i < dirs.length) {
+                            self.p.direction = dirs[i];
+                            i++;
+                            setTimeout(look, 250);
+                        } else {
+                            var stage = self.stage;
+                            var circle = stage.insert(new Q.Sprite({
+                                x: self.p.x,
+                                y: self.p.y,
+                                radius: 10,
+                                type: Q.SPRITE_NONE
+                            }));
+                            circle.add('tween');
+                            circle.draw = function(ctx) {
+                                ctx.fillStyle = '#000';
+                                ctx.beginPath();
+                                ctx.arc(0, 0, this.p.radius, 0, Math.PI * 2);
+                                ctx.fill();
+                            };
+                            circle.animate({ radius: 1000 }, 1, {
+                                callback: function() {
+                                    Q.stageScene('endGame', 1, { label: 'You Win' });
+                                }
+                            });
+                        }
+                    };
+                    look();
+                }
+            });
         },
         /**
          * Execute a nugget step.
